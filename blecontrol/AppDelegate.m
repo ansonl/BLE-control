@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "Constants.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kSavedPin : @"000000"}];
+    
     return YES;
 }
 

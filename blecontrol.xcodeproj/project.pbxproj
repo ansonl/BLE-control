@@ -13,6 +13,7 @@
 		289DE4301F56337800778954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289DE42E1F56337800778954 /* Main.storyboard */; };
 		289DE4321F56337800778954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 289DE4311F56337800778954 /* Assets.xcassets */; };
 		289DE4351F56337800778954 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289DE4331F56337800778954 /* LaunchScreen.storyboard */; };
+		28B291C71F5F572900BC06D6 /* ValidateTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B291C61F5F572900BC06D6 /* ValidateTextFieldDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,10 @@
 		289DE4311F56337800778954 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		289DE4341F56337800778954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		289DE4361F56337800778954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28B291C51F5F572900BC06D6 /* ValidateTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateTextFieldDelegate.h; sourceTree = "<group>"; };
+		28B291C61F5F572900BC06D6 /* ValidateTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateTextFieldDelegate.m; sourceTree = "<group>"; };
+		28E68D7E1F5F5FDB003A65FD /* BLEArrayConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEArrayConstants.h; sourceTree = "<group>"; };
+		28E68D7F1F5F609D003A65FD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +63,14 @@
 		289DE4241F56337800778954 /* blecontrol */ = {
 			isa = PBXGroup;
 			children = (
+				28E68D7F1F5F609D003A65FD /* Constants.h */,
+				28E68D7E1F5F5FDB003A65FD /* BLEArrayConstants.h */,
 				289DE4281F56337800778954 /* AppDelegate.h */,
 				289DE4291F56337800778954 /* AppDelegate.m */,
 				289DE42B1F56337800778954 /* ViewController.h */,
 				289DE42C1F56337800778954 /* ViewController.m */,
+				28B291C51F5F572900BC06D6 /* ValidateTextFieldDelegate.h */,
+				28B291C61F5F572900BC06D6 /* ValidateTextFieldDelegate.m */,
 				289DE42E1F56337800778954 /* Main.storyboard */,
 				289DE4311F56337800778954 /* Assets.xcassets */,
 				289DE4331F56337800778954 /* LaunchScreen.storyboard */,
@@ -154,6 +163,7 @@
 				289DE42D1F56337800778954 /* ViewController.m in Sources */,
 				289DE42A1F56337800778954 /* AppDelegate.m in Sources */,
 				289DE4271F56337800778954 /* main.m in Sources */,
+				28B291C71F5F572900BC06D6 /* ValidateTextFieldDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +324,7 @@
 				289DE43B1F56337800778954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

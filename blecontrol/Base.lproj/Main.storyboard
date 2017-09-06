@@ -1,26 +1,182 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Log:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="df3-oq-zIf">
+                                <rect key="frame" x="0.0" y="345" width="320" height="135"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpO-Lo-pnS">
+                                <rect key="frame" x="160" y="70" width="160" height="267.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZE-V2-6mb">
+                                        <rect key="frame" x="8" y="8" width="144" height="122"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="🔓Driver">
+                                            <color key="titleColor" red="0.2666666667" green="0.59999999999999998" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="unlockOnceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O3G-it-q9f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diu-FJ-00G">
+                                        <rect key="frame" x="8" y="138" width="144" height="121.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="🔓All Doors">
+                                            <color key="titleColor" red="0.2666666667" green="0.59999999999999998" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="unlockTwiceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="msO-Nq-RVu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="diu-FJ-00G" firstAttribute="leading" secondItem="TpO-Lo-pnS" secondAttribute="leading" constant="8" id="AgK-oL-FNs"/>
+                                    <constraint firstAttribute="trailing" secondItem="diu-FJ-00G" secondAttribute="trailing" constant="8" id="BIs-qx-F8E"/>
+                                    <constraint firstAttribute="bottom" secondItem="diu-FJ-00G" secondAttribute="bottom" constant="8" id="RJO-cF-wWR"/>
+                                    <constraint firstItem="eZE-V2-6mb" firstAttribute="top" secondItem="TpO-Lo-pnS" secondAttribute="top" constant="8" id="TPA-ET-zIU"/>
+                                    <constraint firstAttribute="trailing" secondItem="eZE-V2-6mb" secondAttribute="trailing" constant="8" id="akQ-ka-H6A"/>
+                                    <constraint firstItem="diu-FJ-00G" firstAttribute="top" secondItem="eZE-V2-6mb" secondAttribute="bottom" constant="8" id="jFE-dX-Lev"/>
+                                    <constraint firstItem="eZE-V2-6mb" firstAttribute="leading" secondItem="TpO-Lo-pnS" secondAttribute="leading" constant="8" id="kkN-n5-ybc"/>
+                                    <constraint firstItem="eZE-V2-6mb" firstAttribute="width" secondItem="diu-FJ-00G" secondAttribute="width" id="mqk-yz-BMK"/>
+                                    <constraint firstItem="eZE-V2-6mb" firstAttribute="height" secondItem="diu-FJ-00G" secondAttribute="height" id="wWb-c3-jgD"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gou-D7-z7I">
+                                <rect key="frame" x="0.0" y="70" width="160" height="267.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN0-FD-5Zk">
+                                        <rect key="frame" x="8" y="8" width="144" height="122"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="︎︎︎︎🔒︎+💤">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.29185655379999997" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="lockOnceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EzC-UF-q5u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kN-29-VXQ">
+                                        <rect key="frame" x="8" y="138" width="144" height="121.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="🔒+🔔">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.29185655379999997" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="lockTwiceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V3h-Pm-4FO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WN0-FD-5Zk" secondAttribute="trailing" constant="8" id="01k-gs-Ypq"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kN-29-VXQ" secondAttribute="trailing" constant="8" id="7PI-YQ-bpr"/>
+                                    <constraint firstItem="2kN-29-VXQ" firstAttribute="top" secondItem="WN0-FD-5Zk" secondAttribute="bottom" constant="8" id="8Sn-ei-6op"/>
+                                    <constraint firstItem="2kN-29-VXQ" firstAttribute="leading" secondItem="Gou-D7-z7I" secondAttribute="leading" constant="8" id="I93-jK-iNH"/>
+                                    <constraint firstItem="2kN-29-VXQ" firstAttribute="width" secondItem="WN0-FD-5Zk" secondAttribute="width" id="ctz-CH-zA8"/>
+                                    <constraint firstAttribute="bottom" secondItem="2kN-29-VXQ" secondAttribute="bottom" constant="8" id="d5G-kn-h3l"/>
+                                    <constraint firstItem="WN0-FD-5Zk" firstAttribute="leading" secondItem="Gou-D7-z7I" secondAttribute="leading" constant="8" id="iBF-Ui-djs"/>
+                                    <constraint firstItem="2kN-29-VXQ" firstAttribute="height" secondItem="WN0-FD-5Zk" secondAttribute="height" id="ixO-rR-LGb"/>
+                                    <constraint firstItem="WN0-FD-5Zk" firstAttribute="top" secondItem="Gou-D7-z7I" secondAttribute="top" constant="8" id="oiO-Eu-yw7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="wOI-7R-LYg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ax-nM-Ogv">
+                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-72-8Fq">
+                                        <rect key="frame" x="8" y="40" width="97" height="2"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gc3-gY-rgL">
+                                        <rect key="frame" x="215" y="7" width="97" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <state key="normal" title="Set PIN"/>
+                                        <connections>
+                                            <action selector="setPinAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rBC-vO-xzn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eR-Pn-ZgQ">
+                                        <rect key="frame" x="8" y="11" width="97" height="26.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4nJ-l5-PgZ"/>
+                                    <constraint firstItem="0eR-Pn-ZgQ" firstAttribute="centerY" secondItem="2ax-nM-Ogv" secondAttribute="centerY" id="9hG-pr-kJ3"/>
+                                    <constraint firstItem="0eR-Pn-ZgQ" firstAttribute="leading" secondItem="2ax-nM-Ogv" secondAttribute="leading" constant="8" id="Bh5-jO-cPk"/>
+                                    <constraint firstItem="HEf-72-8Fq" firstAttribute="leading" secondItem="2ax-nM-Ogv" secondAttribute="leading" constant="8" id="HiJ-W3-SCB"/>
+                                    <constraint firstItem="0eR-Pn-ZgQ" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="h5x-A3-bcb"/>
+                                    <constraint firstAttribute="bottom" secondItem="HEf-72-8Fq" secondAttribute="bottom" constant="8" id="hq8-4z-NqQ"/>
+                                    <constraint firstItem="Gc3-gY-rgL" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="iVM-5H-0VA"/>
+                                    <constraint firstItem="HEf-72-8Fq" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="lYv-a6-re4"/>
+                                    <constraint firstItem="Gc3-gY-rgL" firstAttribute="centerY" secondItem="2ax-nM-Ogv" secondAttribute="centerY" id="sdg-Zw-WkG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gc3-gY-rgL" secondAttribute="trailing" constant="8" id="ufS-hH-TUU"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-0W-eUU">
+                                <rect key="frame" x="142" y="185.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QQa-0W-eUU" firstAttribute="centerY" secondItem="Gou-D7-z7I" secondAttribute="centerY" id="1Pe-aL-k7T"/>
+                            <constraint firstItem="QQa-0W-eUU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1c5-2E-eR6"/>
+                            <constraint firstItem="Gou-D7-z7I" firstAttribute="top" secondItem="2ax-nM-Ogv" secondAttribute="bottom" id="5CK-7a-aSr"/>
+                            <constraint firstItem="TpO-Lo-pnS" firstAttribute="width" secondItem="Gou-D7-z7I" secondAttribute="width" id="5Ta-px-KtZ"/>
+                            <constraint firstItem="2ax-nM-Ogv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="5nZ-h2-Cby"/>
+                            <constraint firstItem="df3-oq-zIf" firstAttribute="height" relation="lessThanOrEqual" secondItem="Gou-D7-z7I" secondAttribute="height" multiplier="0.5" constant="1" id="7Ik-gd-DRC"/>
+                            <constraint firstItem="df3-oq-zIf" firstAttribute="top" secondItem="TpO-Lo-pnS" secondAttribute="bottom" constant="7.5" id="8bN-YX-Alz"/>
+                            <constraint firstItem="TpO-Lo-pnS" firstAttribute="top" secondItem="2ax-nM-Ogv" secondAttribute="bottom" id="B0t-aS-dlB"/>
+                            <constraint firstItem="df3-oq-zIf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="E8i-p4-ozi"/>
+                            <constraint firstItem="2ax-nM-Ogv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NT7-cE-FKh"/>
+                            <constraint firstItem="Gou-D7-z7I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="aCZ-6h-j6h"/>
+                            <constraint firstItem="TpO-Lo-pnS" firstAttribute="leading" secondItem="Gou-D7-z7I" secondAttribute="trailing" id="fQZ-tb-bIV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="df3-oq-zIf" secondAttribute="trailing" constant="-16" id="hbj-Mh-1OI"/>
+                            <constraint firstItem="df3-oq-zIf" firstAttribute="top" secondItem="Gou-D7-z7I" secondAttribute="bottom" constant="8" id="lg3-If-CfN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2ax-nM-Ogv" secondAttribute="trailing" constant="-16" id="vOg-bY-bjN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="df3-oq-zIf" secondAttribute="bottom" id="wRF-v2-uR0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TpO-Lo-pnS" secondAttribute="trailing" constant="-16" id="yc5-8K-Aot"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="QQa-0W-eUU" id="AmK-M8-dTs"/>
+                        <outlet property="connectedLabel" destination="0eR-Pn-ZgQ" id="wIZ-FP-sUZ"/>
+                        <outlet property="lockOnceButton" destination="WN0-FD-5Zk" id="dex-RJ-41s"/>
+                        <outlet property="lockTwiceButton" destination="2kN-29-VXQ" id="VUv-zI-YOU"/>
+                        <outlet property="logTextView" destination="df3-oq-zIf" id="Jz9-zO-LaH"/>
+                        <outlet property="rssiIndicator" destination="HEf-72-8Fq" id="7oC-J4-VcM"/>
+                        <outlet property="unlockOnceButton" destination="eZE-V2-6mb" id="Jhe-Lg-ZVm"/>
+                        <outlet property="unlockTwiceButton" destination="diu-FJ-00G" id="7gz-zp-4YA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="114.375" y="121.25"/>
         </scene>
     </scenes>
 </document>
