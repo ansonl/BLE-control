@@ -12,6 +12,8 @@
 #define kBCGenericErrorDomain @"BCGenericErrorDomain"
 
 #define kSavedPin @"UserPin"
+#define kServicePreference @"service_preference"
+#define kCharacteristicPreference @"characteristic_preference"
 
 #define kConnectionCategory 0x31
 #define kConnectionValidatePIN 0x31
@@ -20,6 +22,7 @@
 #define kSecurityCategory 0x32
 #define kSecurityLockControl 0x31
 #define kSecurityUnlockControl 0x32
+#define kSecurityAlarmControl 0x33
 
 #define kNoDetail 0x30
 #define kTwiceDetail 0x31

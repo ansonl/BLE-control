@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kSavedPin : @"000000"}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kSavedPin : @"000000", kServicePreference : @"D06E", kCharacteristicPreference : @"0001"}];
     
     return YES;
 }

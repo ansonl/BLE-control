@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2811B8611F60BBF1005B628B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2811B8601F60BBF1005B628B /* Settings.bundle */; };
 		289DE4271F56337800778954 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DE4261F56337800778954 /* main.m */; };
 		289DE42A1F56337800778954 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DE4291F56337800778954 /* AppDelegate.m */; };
 		289DE42D1F56337800778954 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DE42C1F56337800778954 /* ViewController.m */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2811B8601F60BBF1005B628B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = blecontrol/Settings.bundle; sourceTree = "<group>"; };
 		289DE4221F56337800778954 /* blecontrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blecontrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		289DE4261F56337800778954 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		289DE4281F56337800778954 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		289DE4191F56337800778954 = {
 			isa = PBXGroup;
 			children = (
+				2811B8601F60BBF1005B628B /* Settings.bundle */,
 				289DE4241F56337800778954 /* blecontrol */,
 				289DE4231F56337800778954 /* Products */,
 			);
@@ -147,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2811B8611F60BBF1005B628B /* Settings.bundle in Resources */,
 				289DE4351F56337800778954 /* LaunchScreen.storyboard in Resources */,
 				289DE4321F56337800778954 /* Assets.xcassets in Resources */,
 				289DE4301F56337800778954 /* Main.storyboard in Resources */,
