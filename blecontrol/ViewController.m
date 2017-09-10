@@ -36,12 +36,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *lockTwiceButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlockOnceButton;
 @property (weak, nonatomic) IBOutlet UIButton *unlockTwiceButton;
+@property (weak, nonatomic) IBOutlet UIButton *alarmButton;
 - (IBAction)showPeripheralOptions:(id)sender;
 - (IBAction)setPinAction:(id)sender;
 - (IBAction)lockOnceAction:(id)sender;
 - (IBAction)lockTwiceAction:(id)sender;
 - (IBAction)unlockOnceAction:(id)sender;
 - (IBAction)unlockTwiceAction:(id)sender;
+- (IBAction)alarmAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *logTextView;
 
 @end
@@ -78,6 +80,10 @@
     
     [self addNewLog:[NSString stringWithFormat:@"Manager updated state: %@", state]];
     
+    if (central.state == CBManagerStatePoweredOff) {
+        [_peripheralButton setTitle:@"Radio Off" forState:UIControlStateNormal];
+    }
+    
     if (central.state == CBManagerStatePoweredOn) {
         [self startScanningForPeripheralWithCentralManager:central];
     }
@@ -94,7 +100,7 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     [self addNewLog:[NSString stringWithFormat:@"Connected %@", peripheral.name]];
     
-    _peripheralButton.titleLabel.text = peripheral.name;
+    [_peripheralButton setTitle:peripheral.name forState:UIControlStateNormal];
     
     [peripheral readRSSI];
     
@@ -108,7 +114,7 @@
     if (error)
         [self addNewLog:[NSString stringWithFormat:@"Error: %@", error.localizedDescription]];
     
-    _peripheralButton.titleLabel.text = @"N/A";
+    [_peripheralButton setTitle:@"N/A" forState:UIControlStateNormal];
     [_rssiIndicator setProgress:0 animated:YES];
     
     [self disableAllControlButtons];
@@ -271,7 +277,7 @@
     [central scanForPeripheralsWithServices:@[[CBUUID UUIDWithData:[self dataFromBLEIdentifier:[self getServiceIdentifier]]]] options:nil];
     [self addNewLog:[NSString stringWithFormat:@"Scanning for peripherals with service %#4lx", [self getServiceIdentifier]]];
     
-    _peripheralButton.titleLabel.text = @"Scanning";
+    [_peripheralButton setTitle:@"Scanning" forState:UIControlStateNormal];
 }
 
 - (NSData *)dataFromBLEIdentifier:(long)bleID {
@@ -368,7 +374,7 @@
     
     UIAlertAction *sendAction = [UIAlertAction
                                  actionWithTitle:@"Set"
-                                 style:UIAlertActionStyleDefault
+                                 style:UIAlertActionStyleDestructive
                                  handler:^(UIAlertAction * action)
                                  {
                                      _sendingAlertController = [UIAlertController
@@ -455,6 +461,8 @@
     [self presentViewController:pinAlert animated:YES completion:nil];
 }
 
+#pragma mark - Action methods
+
 - (IBAction)showPeripheralOptions:(id)sender {
     //TODO add peripheral scan options and picker
 }
@@ -509,6 +517,41 @@
     [self disableAllControlButtons];
 }
 
+- (IBAction)alarmAction:(id)sender {
+    
+    UIAlertController *alarmAlert = [UIAlertController
+                                   alertControllerWithTitle:@"Vehicle Alarm"
+                                   message:nil
+                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *sendAction = [UIAlertAction
+                                 actionWithTitle:@"Confirm"
+                                 style:UIAlertActionStyleDestructive
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     NSString *command = [self createCommandWithCategory:kSecurityCategory withControl:kSecurityAlarmControl withDetail:kNoDetail withPIN:[self retrieveSavedPIN] withParams:nil];
+                                     
+                                     [_targetPeripheral writeValue:[command dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:_targetCharacteristic type:CBCharacteristicWriteWithResponse];
+                                     
+                                     if ([sender isKindOfClass:[UIButton class]]) {
+                                         [UIView animateWithDuration:1.0 animations:^{
+                                             ((UIButton *)sender).backgroundColor = [UIColor lightGrayColor];
+                                         }];
+                                     }
+                                     [self disableAllControlButtons];
+                                 }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:nil];
+    
+    [alarmAlert addAction:sendAction];
+    [alarmAlert addAction:cancelAction];
+    
+    [self presentViewController:alarmAlert animated:YES completion:nil];
+}
+
 - (void)disableAllControlButtons {
     for (UIView *button in _allControlButtons)
         if ([button respondsToSelector:@selector(setEnabled:)])
@@ -533,16 +576,33 @@
     return UIStatusBarStyleLightContent;
 }
 
+#pragma mark - VC lifecycle methods
+
+-(void)appWillResignActive:(NSNotification*)note
+{
+    if (_targetPeripheral) {
+        [_centralManager cancelPeripheralConnection:_targetPeripheral];
+    }
+}
+-(void)appWillTerminate:(NSNotification*)note
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _centralManager  = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
-    
-    _allControlButtons = [[NSArray alloc] initWithObjects:_pinButton, _lockOnceButton, _lockTwiceButton, _unlockOnceButton, _unlockTwiceButton, nil];
-    
+    //Style status bar
     [self setNeedsStatusBarAppearanceUpdate];
     
+    //Disable controls
+    [_alarmButton setTitle:@"" forState:UIControlStateDisabled];
+    _allControlButtons = [[NSArray alloc] initWithObjects:_pinButton, _lockOnceButton, _lockTwiceButton, _unlockOnceButton, _unlockTwiceButton, _alarmButton, nil];
     [self disableAllControlButtons];
+    
+    _centralManager  = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     
     //Set timer in background to repeatedly compute RSSI
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void) {
@@ -554,10 +614,11 @@
             sleep(1);
         }
     });
-    
-    [self getServiceIdentifier];
-}
 
+    //Get notified when backgrounded
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

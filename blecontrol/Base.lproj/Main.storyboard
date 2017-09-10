@@ -157,6 +157,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaB-WI-S42">
                                         <rect key="frame" x="8" y="5" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <state key="normal" title="N/A">
                                             <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -164,22 +165,38 @@
                                             <action selector="showPeripheralOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jma-Zm-cEp"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X97-MM-X1v">
+                                        <rect key="frame" x="111.5" y="0.5" width="97" height="39"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="🚨">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.29185655379999997" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="alarmAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2PJ-wo-NBS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4nJ-l5-PgZ"/>
                                     <constraint firstItem="HEf-72-8Fq" firstAttribute="leading" secondItem="2ax-nM-Ogv" secondAttribute="leading" constant="8" id="HiJ-W3-SCB"/>
+                                    <constraint firstItem="X97-MM-X1v" firstAttribute="centerX" secondItem="2ax-nM-Ogv" secondAttribute="centerX" id="TUj-uX-1ga"/>
                                     <constraint firstItem="UaB-WI-S42" firstAttribute="leading" secondItem="2ax-nM-Ogv" secondAttribute="leading" constant="8" id="YQ9-Ad-8my"/>
                                     <constraint firstItem="UaB-WI-S42" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="ZeJ-Wx-N6i"/>
                                     <constraint firstItem="UaB-WI-S42" firstAttribute="centerY" secondItem="2ax-nM-Ogv" secondAttribute="centerY" id="cdx-1F-ARG"/>
                                     <constraint firstAttribute="bottom" secondItem="HEf-72-8Fq" secondAttribute="bottom" constant="8" id="hq8-4z-NqQ"/>
                                     <constraint firstItem="Gc3-gY-rgL" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="iVM-5H-0VA"/>
                                     <constraint firstItem="HEf-72-8Fq" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="lYv-a6-re4"/>
+                                    <constraint firstItem="X97-MM-X1v" firstAttribute="width" secondItem="2ax-nM-Ogv" secondAttribute="width" multiplier="0.3" constant="1" id="lZa-uQ-E0O"/>
                                     <constraint firstItem="Gc3-gY-rgL" firstAttribute="centerY" secondItem="2ax-nM-Ogv" secondAttribute="centerY" id="sdg-Zw-WkG"/>
                                     <constraint firstAttribute="trailing" secondItem="Gc3-gY-rgL" secondAttribute="trailing" constant="8" id="ufS-hH-TUU"/>
+                                    <constraint firstItem="X97-MM-X1v" firstAttribute="centerY" secondItem="2ax-nM-Ogv" secondAttribute="centerY" id="wrx-YD-Ryv"/>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-0W-eUU">
-                                <rect key="frame" x="141.5" y="200.5" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="200" width="37" height="37"/>
                                 <color key="color" red="0.97254901960784312" green="0.97254901960784312" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -207,6 +224,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="QQa-0W-eUU" id="AmK-M8-dTs"/>
+                        <outlet property="alarmButton" destination="X97-MM-X1v" id="vpz-eo-lDz"/>
                         <outlet property="lockOnceButton" destination="WN0-FD-5Zk" id="dex-RJ-41s"/>
                         <outlet property="lockTwiceButton" destination="2kN-29-VXQ" id="VUv-zI-YOU"/>
                         <outlet property="logTextView" destination="df3-oq-zIf" id="Jz9-zO-LaH"/>
